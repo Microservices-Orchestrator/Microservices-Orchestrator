@@ -7,6 +7,9 @@ builder.Services.AddHttpClient<RouterService>(); // RouterService için HttpClien
 
 var app = builder.Build();
 
+app.UseMiddleware<JwtAuthMiddleware>(); // JWT doðrulama middleware'ini ekliyoruz
+
+
 app.Map("/{**catch-all}", async (HttpContext context, RouterService routerService) =>
 {
     routerService.AddRoute("/api/users", "https://jsonplaceholder.typicode.com");
@@ -14,7 +17,7 @@ app.Map("/{**catch-all}", async (HttpContext context, RouterService routerServic
     var response = await routerService.ForwardRequestAsync(request); // Ýsteði yönlendir
 
     if (response != null)
-    {
+    {  
         var content = await response.Content.ReadAsStringAsync(); // Yanýt içeriðini oku
         return Results.Content(content, "application/json"); // Yanýtý döndür
     }
