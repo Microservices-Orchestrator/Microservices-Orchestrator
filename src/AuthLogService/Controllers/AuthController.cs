@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AuthLogService.Controllers;
 
@@ -21,9 +25,21 @@ public class AuthController : ControllerBase
         if (isSuccess)
         {
             // TODO: 4. Başarılı ise JWT üret ve geri dön
-            string fakeToken = "ornek_jwt_token_buraya_gelecek"; 
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes("BenimCokGizliVeGuvenliAnahtarim12345!"); // Program.cs ile aynı şifre olmalı!
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, request.Username) }),
+                Expires = DateTime.UtcNow.AddHours(1), // Token 1 saat geçerli olacak
+                Issuer = "http://localhost:5064",
+                Audience = "http://localhost:5064",
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
             
-            return Ok(new { Message = "Giriş başarılı", Token = fakeToken });
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var jwtString = tokenHandler.WriteToken(token);
+
+            return Ok(new { Message = "Giriş başarılı", Token = jwtString });
         }
         else
         {
