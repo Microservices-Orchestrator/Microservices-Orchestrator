@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zQC0jasF1ilkFcFPEG/IlSughscEu43FWflyaBWLbDw=",
+  "Source": "AuthLogService",
+  "BasePath": "_content/AuthLogService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
