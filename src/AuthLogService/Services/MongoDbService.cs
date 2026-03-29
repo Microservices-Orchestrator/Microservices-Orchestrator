@@ -9,7 +9,7 @@ public class MongoDbService
 
     public MongoDbService(IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("MongoDb") ?? "mongodb://localhost:27017";
+        var connectionString = configuration.GetConnectionString("MongoDb");
         var mongoClient = new MongoClient(connectionString);
         var mongoDatabase = mongoClient.GetDatabase("AuthLogDb"); // Veritabanı adı
 
