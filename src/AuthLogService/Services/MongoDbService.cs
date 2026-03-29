@@ -9,12 +9,11 @@ public class MongoDbService
 
     public MongoDbService(IConfiguration configuration)
     {
-        // Lokal bilgisayarımızda çalışan MongoDB'ye bağlanıyoruz
         var connectionString = configuration.GetConnectionString("MongoDb") ?? "mongodb://localhost:27017";
         var mongoClient = new MongoClient(connectionString);
         var mongoDatabase = mongoClient.GetDatabase("AuthLogDb"); // Veritabanı adı
 
-        _authLogs = mongoDatabase.GetCollection<AuthLog>("LoginAttempts"); // Tablo adı
+        _authLogs = mongoDatabase.GetCollection<AuthLog>("LoginAttempts"); // Tablo (Koleksiyon) adı
     }
 
     public async Task LogLoginAttemptAsync(string username, string ipAddress, bool isSuccess)
