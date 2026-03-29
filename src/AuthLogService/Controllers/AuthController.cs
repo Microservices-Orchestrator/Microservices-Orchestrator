@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using AuthLogService.Services;
 
 namespace AuthLogService.Controllers;
 
@@ -10,8 +11,15 @@ namespace AuthLogService.Controllers;
 [Route("api/auth")]
 public class AuthController : ControllerBase
 {
+    private readonly MongoDbService _mongoDbService;
+
+    public AuthController(MongoDbService mongoDbService)
+    {
+        _mongoDbService = mongoDbService;
+    }
+
     [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginRequest request)
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         // 1. İsteği yapanın IP adresini al
         var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Bilinmiyor";
@@ -19,8 +27,8 @@ public class AuthController : ControllerBase
         // 2. Basit bir doğrulama simülasyonu (İleride gerçek bir veritabanından yapılabilir)
         bool isSuccess = (request.Username == "admin" && request.Password == "123456");
 
-        // TODO: 3. MongoDB'ye log yazma işlemi (IP adresi, denenen kullanıcı adı, başarılı/başarısız durumu, tarih)
-        // _mongoDbService.LogLoginAttempt(request.Username, ipAddress, isSuccess);
+        // 3. MongoDB'ye log yazma işlemi (IP adresi, denenen kullanıcı adı, başarılı/başarısız durumu)
+        await _mongoDbService.LogLoginAttemptAsync(request.Username, ipAddress, isSuccess);
 
         if (isSuccess)
         {

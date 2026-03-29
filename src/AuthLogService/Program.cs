@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AuthLogService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// MongoDB servisimizi sisteme tanıtıyoruz
+builder.Services.AddSingleton<MongoDbService>();
 
 // JWT Authentication Ayarları (Kimlik Doğrulama)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
