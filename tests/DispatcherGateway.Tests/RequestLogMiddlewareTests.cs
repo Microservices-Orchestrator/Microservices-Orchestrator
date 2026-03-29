@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DispatcherGateway;
 
 namespace DispatcherGateway.Tests
 {
@@ -24,7 +25,7 @@ namespace DispatcherGateway.Tests
             var middleware = new RequestLogMiddleware(next,mockLogService.Object);
                 await middleware.InvokeAsync(context);
     
-                handlerMock.Verify(x => x.LogRequest(It.IsAny<HttpContext>()), Times.Once);
+                mockLogService.Verify(x => x.LogRequest(It.IsAny<HttpContext>()), Times.Once);
         }
     }
 }
