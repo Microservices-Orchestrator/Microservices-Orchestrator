@@ -8,25 +8,34 @@ namespace DispatcherGateway
     {
         private readonly ConnectionMultiplexer _redis;
 
-        public RedisLogService()
+        public RedisLogService(IConfiguration configuration)
         {
-            _redis = ConnectionMultiplexer.Connect("localhost:6379");
+            string redisConnectionString = configuration.GetConnectionString("Redis");
+            _redis = ConnectionMultiplexer.Connect(redisConnectionString);
         }
-        public Task LogRequest(HttpContext context)
+        public async Task LogRequest(HttpContext context)
         {
-            var db = _redis.GetDatabase();
-
-            string ipAdresi;
-
-            if(context.Connection.RemoteIpAddress != null)
+            try
             {
-                ipAdresi = context.Connection.RemoteIpAddress.ToString();
+                var db = _redis.GetDatabase();
+
+                string ipAdresi;
+
+                if (context.Connection.RemoteIpAddress != null)
+                {
+                    ipAdresi = context.Connection.RemoteIpAddress.ToString();
+                }
+                else
+                {
+                    ipAdresi = "IP Adresi Bilinmiyor";
+                }
+                await db.ListRightPushAsync("request_logs", $"Path: {context.Request.Path}, Method: {context.Request.Method}, IP: {ipAdresi}");
             }
-            else
+            catch(Exception e)
             {
-                ipAdresi = "IP Adresi Bilinmiyor";
+                Console.WriteLine($"[UYARI] Redis loglanamadi. Hata: {e.Message}");
             }
-            return db.ListRightPushAsync("request_logs", $"Path: {context.Request.Path}, Method: {context.Request.Method}, IP: {ipAdresi}");
+            
 
         }
 
