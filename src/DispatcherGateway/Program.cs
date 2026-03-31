@@ -3,10 +3,11 @@ using DispatcherGateway;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<RouterService>(); // RouterService için HttpClient ekliyoruz
-
+builder.Services.AddSingleton<ILogService, RedisLogService>(); // ILogService için RedisLogService ekliyoruz
 
 var app = builder.Build();
 
+app.UseMiddleware<RequestLogMiddleware>();
 app.UseMiddleware<JwtAuthMiddleware>(); // JWT doðrulama middleware'ini ekliyoruz
 
 
