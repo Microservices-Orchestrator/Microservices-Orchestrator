@@ -11,8 +11,8 @@
         }
         public async Task InvokeAsync(HttpContext context)
         {
-            await _logService.LogRequest(context); // İstek bilgilerini logla
-            await _next(context); // Sonraki middleware'e geç
+            await _logService.LogRequest(context);
+            await _next(context); 
         }
     }
 }
