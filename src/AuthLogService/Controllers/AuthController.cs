@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using AuthLogService.Services;
+using AuthLogService.Models;
 
 namespace AuthLogService.Controllers;
 
@@ -18,14 +19,38 @@ public class AuthController : ControllerBase
         _mongoDbService = mongoDbService;
     }
 
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+    {
+        var existingUser = await _mongoDbService.GetUserByUsernameAsync(request.Username);
+        if (existingUser != null)
+        {
+            return Conflict(new { Message = "Bu kullanıcı adı zaten mevcut." });
+        }
+
+        // TODO (Commit 11): Şifre burada hash'lenerek kaydedilmelidir. Bu hali güvensizdir.
+        var newUser = new User
+        {
+            Username = request.Username,
+            PasswordHash = request.Password // Şimdilik hash'lemeden kaydediyoruz.
+        };
+
+        await _mongoDbService.CreateUserAsync(newUser);
+
+        return CreatedAtAction(nameof(Register), new { id = newUser.Id }, new { Message = "Kullanıcı başarıyla oluşturuldu." });
+    }
+
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         // 1. İsteği yapanın IP adresini al
         var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Bilinmiyor";
 
-        // 2. Basit bir doğrulama simülasyonu (İleride gerçek bir veritabanından yapılabilir)
-        bool isSuccess = (request.Username == "admin" && request.Password == "123456");
+        // 2. Kullanıcıyı veritabanından bul ve şifreyi doğrula
+        var user = await _mongoDbService.GetUserByUsernameAsync(request.Username);
+
+        // TODO (Commit 11): Şifre doğrulaması burada hash karşılaştırması ile yapılmalıdır.
+        bool isSuccess = (user != null && user.PasswordHash == request.Password);
 
         // 3. MongoDB'ye log yazma işlemi (IP adresi, denenen kullanıcı adı, başarılı/başarısız durumu)
         await _mongoDbService.LogLoginAttemptAsync(request.Username, ipAddress, isSuccess);
@@ -58,3 +83,4 @@ public class AuthController : ControllerBase
 
 // Kullanıcıdan gelen JSON isteğini temsil eden model
 public record LoginRequest(string Username, string Password);
+public record RegisterRequest(string Username, string Password);
