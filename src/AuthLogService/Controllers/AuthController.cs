@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using AuthLogService.Services;
+using BCrypt.Net;
 using AuthLogService.Models;
 
 namespace AuthLogService.Controllers;
@@ -28,11 +29,10 @@ public class AuthController : ControllerBase
             return Conflict(new { Message = "Bu kullanıcı adı zaten mevcut." });
         }
 
-        // TODO (Commit 11): Şifre burada hash'lenerek kaydedilmelidir. Bu hali güvensizdir.
         var newUser = new User
         {
             Username = request.Username,
-            PasswordHash = request.Password // Şimdilik hash'lemeden kaydediyoruz.
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
         };
 
         await _mongoDbService.CreateUserAsync(newUser);
@@ -49,8 +49,7 @@ public class AuthController : ControllerBase
         // 2. Kullanıcıyı veritabanından bul ve şifreyi doğrula
         var user = await _mongoDbService.GetUserByUsernameAsync(request.Username);
 
-        // TODO (Commit 11): Şifre doğrulaması burada hash karşılaştırması ile yapılmalıdır.
-        bool isSuccess = (user != null && user.PasswordHash == request.Password);
+        bool isSuccess = (user != null && BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash));
 
         // 3. MongoDB'ye log yazma işlemi (IP adresi, denenen kullanıcı adı, başarılı/başarısız durumu)
         await _mongoDbService.LogLoginAttemptAsync(request.Username, ipAddress, isSuccess);
