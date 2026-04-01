@@ -23,6 +23,11 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
+        if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+        {
+            return BadRequest(new { Message = "Kullanıcı adı ve şifre boş olamaz." });
+        }
+
         var existingUser = await _mongoDbService.GetUserByUsernameAsync(request.Username);
         if (existingUser != null)
         {
@@ -43,6 +48,11 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
+        if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+        {
+            return BadRequest(new { Message = "Kullanıcı adı ve şifre boş olamaz." });
+        }
+
         // 1. İsteği yapanın IP adresini al
         var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Bilinmiyor";
 
