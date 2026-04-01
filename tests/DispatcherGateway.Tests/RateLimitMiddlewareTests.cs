@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DispatcherGateway.Tests
 {
-    public class RateLimitMiddlewareTests
+    public  class RateLimitMiddlewareTests
     {
         [Fact]
-        public void TestRateLimitMiddleware()
+        public async Task TestRateLimitMiddleware()
         {
             var context = new DefaultHttpContext();
             RequestDelegate requestDelegate = (HttpContext ctx) =>
