@@ -7,6 +7,7 @@ builder.Services.AddSingleton<ILogService, RedisLogService>(); // ILogService iç
 
 var app = builder.Build();
 
+app.UseMiddleware<RateLimitMiddleware>();
 app.UseMiddleware<RequestLogMiddleware>();
 app.UseMiddleware<JwtAuthMiddleware>(); // JWT doðrulama middleware'ini ekliyoruz
 
