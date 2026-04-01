@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.AspNetCore.Connections;
 using StackExchange.Redis;
+using System.Net;
+using System.Text.Json;
 
 namespace DispatcherGateway
 {
@@ -29,7 +31,15 @@ namespace DispatcherGateway
                 {
                     ipAdresi = "IP Adresi Bilinmiyor";
                 }
-                await db.ListRightPushAsync("request_logs", $"Path: {context.Request.Path}, Method: {context.Request.Method}, IP: {ipAdresi}");
+                var logData = new
+                {
+                    IPAddress = ipAdresi,
+                    Path = context.Request.Path.ToString(),
+                    Method = context.Request.Method,
+                    Timestamp = DateTime.UtcNow
+                };
+                string jsonLog = JsonSerializer.Serialize(logData);
+                await db.ListRightPushAsync("request_logs", jsonLog);
             }
             catch(Exception e)
             {
