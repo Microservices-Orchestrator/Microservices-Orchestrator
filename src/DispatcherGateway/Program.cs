@@ -4,7 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<RouterService>(); // RouterService için HttpClient ekliyoruz
 builder.Services.AddSingleton<ILogService, RedisLogService>(); // ILogService için RedisLogService ekliyoruz
-builder.Services.AddHealthChecks(); 
+builder.Services.AddHealthChecks()
+    .AddRedis(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379", name: "Redis Check");
 var app = builder.Build();
 
 app.UseMiddleware<RateLimitMiddleware>();
