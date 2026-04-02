@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # 1. GATEWAY
+  dispatcher-gateway:
+    build:
+      context: ./src/DispatcherGateway
+      dockerfile: Dockerfile
+    ports:
+      - "5089:8080"
+    environment:
+      - ConnectionStrings__Redis=redis:6379
+    depends_on:
+      - redis
+    networks:
+      - orchestrator-net
+
+  # 2. REDIS
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - orchestrator-net
+
+  # 3. GRAFANA
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - redis
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - orchestrator-net
+
+# Akademik ve projeye uygun ag ismimiz
+networks:
+  orchestrator-net: 
+    driver: bridge
+
+volumes:
+  redis-data:
+  grafana-data:
