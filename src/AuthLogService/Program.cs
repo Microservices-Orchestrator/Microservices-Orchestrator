@@ -49,3 +49,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// Test projesinin Program sınıfına erişebilmesi için bu satır gereklidir.
+public partial class Program { }

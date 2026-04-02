@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "nQvAPNf47e/U5b2ga69HarvDg9yGLvxGPshRwXhuuAgMSEvh5sIRY6EAJcAn9aFYV19EciLQptPuLAdAVWfgew==",
+  "dgSpecHash": "Z33Ukck3Vr4nUnnDRfiELy10LaTqQzSQlVloc+kjEgtRpMGPpmgQiHhRZZlKFpyQ4QAURr9cYsE9kJnRYDTQFA==",
   "success": true,
   "projectFilePath": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/AuthLogService/AuthLogService.csproj",
   "expectedPackageFiles": [
     "/Users/efeaydin/.nuget/packages/awssdk.core/3.7.100.14/awssdk.core.3.7.100.14.nupkg.sha512",
     "/Users/efeaydin/.nuget/packages/awssdk.securitytoken/3.7.100.14/awssdk.securitytoken.3.7.100.14.nupkg.sha512",
+    "/Users/efeaydin/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/efeaydin/.nuget/packages/dnsclient/1.6.1/dnsclient.1.6.1.nupkg.sha512",
     "/Users/efeaydin/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.20/microsoft.aspnetcore.authentication.jwtbearer.7.0.20.nupkg.sha512",
     "/Users/efeaydin/.nuget/packages/microsoft.aspnetcore.openapi/7.0.20/microsoft.aspnetcore.openapi.7.0.20.nupkg.sha512",
