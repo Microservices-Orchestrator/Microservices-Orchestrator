@@ -12,7 +12,11 @@ namespace DispatcherGateway
 
         public RedisLogService(IConfiguration configuration)
         {
-            string redisConnectionString = configuration.GetConnectionString("Redis");
+            string? redisConnectionString = configuration.GetConnectionString("Redis");
+            if (string.IsNullOrWhiteSpace(redisConnectionString))
+            {
+                throw new ArgumentNullException(nameof(redisConnectionString), "Redis bağlantı adresi appsettings.json veya çevre değişkenleri içinde bulunamadı!");
+            }
             _redis = ConnectionMultiplexer.Connect(redisConnectionString);
         }
         public async Task LogRequest(HttpContext context)
