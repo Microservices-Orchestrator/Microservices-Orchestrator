@@ -4,13 +4,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<RouterService>(); // RouterService için HttpClient ekliyoruz
 builder.Services.AddSingleton<ILogService, RedisLogService>(); // ILogService için RedisLogService ekliyoruz
-
+builder.Services.AddHealthChecks(); 
 var app = builder.Build();
 
 app.UseMiddleware<RateLimitMiddleware>();
 app.UseMiddleware<RequestLogMiddleware>();
 app.UseMiddleware<JwtAuthMiddleware>(); // JWT doðrulama middleware'ini ekliyoruz
-
+app.MapHealthChecks("/health"); // Saðlýk kontrolü endpoint'i ekliyoruz
 
 app.Map("/{**catch-all}", async (HttpContext context, RouterService routerService) =>
 {

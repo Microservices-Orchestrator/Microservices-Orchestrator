@@ -12,6 +12,11 @@ namespace DispatcherGateway
         }
         public async Task InvokeAsync(HttpContext context)
         {
+            if (context.Request.Path.StartsWithSegments("/health"))
+            {
+                await _next(context);
+                return;
+            }
             if (!context.Request.Headers.ContainsKey("Authorization"))
             {
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized;
