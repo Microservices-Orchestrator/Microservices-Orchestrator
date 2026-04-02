@@ -2,9 +2,9 @@
 {
     public class RouterService
     {
-        private readonly HttpClient _httpClient; // İnternete çıkıp istek atacak postacımız
+        private readonly HttpClient _httpClient; 
 
-        private readonly Dictionary<string, string> _routes;     // Route'ları tutacağımız sözlük
+        private readonly Dictionary<string, string> _routes;     
 
         public RouterService(HttpClient httpClient)
         {
@@ -14,18 +14,26 @@
         }
         public void AddRoute(string path, string targetUrl)
         {
-            _routes[path] = targetUrl; // Route'u ekle veya güncelle
+            _routes[path] = targetUrl; 
         }
-        public async Task<HttpResponseMessage> ForwardRequestAsync(string path)
+        public async Task<HttpResponseMessage> ForwardRequestAsync(string? path, string method)
         { 
-             if (_routes.TryGetValue(path, out var targetUrl))
+             if(string.IsNullOrEmpty(path))
              {
-                var request = new HttpRequestMessage(HttpMethod.Get, targetUrl + path); // İstek oluştur
-                 return await _httpClient.SendAsync(request); // İsteği gönder ve sonucu döndür
+                 return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest); 
              }
+            var route = _routes.FirstOrDefault(r => path.StartsWith(r.Key));
+
+            if (route.Key != null) { 
+                var targetUrl = route.Value;
+
+                var request = new HttpRequestMessage(new HttpMethod(method), targetUrl + path);
+
+                return await _httpClient.SendAsync(request);
+            }
             else
             {
-                return new HttpResponseMessage(System.Net.HttpStatusCode.NotFound); // Route bulunamazsa 404 döndür
+                return new HttpResponseMessage(System.Net.HttpStatusCode.NotFound);
             }
         }
     }

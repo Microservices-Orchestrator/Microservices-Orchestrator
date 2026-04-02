@@ -16,7 +16,7 @@ app.Map("/{**catch-all}", async (HttpContext context, RouterService routerServic
 {
     routerService.AddRoute("/api/users", "https://jsonplaceholder.typicode.com");
     var request = context.Request.Path.Value; // Ýstek yolunu al
-    var response = await routerService.ForwardRequestAsync(request); // Ýsteði yönlendir
+    var response = await routerService.ForwardRequestAsync(context.Request.Path, context.Request.Method);
 
     if (response != null)
     {  
