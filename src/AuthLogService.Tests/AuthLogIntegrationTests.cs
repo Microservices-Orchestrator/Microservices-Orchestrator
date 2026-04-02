@@ -56,10 +56,8 @@ public class AuthLogIntegrationTests : IClassFixture<WebApplicationFactory<Progr
         var uniqueUsername = $"testuser_{Guid.NewGuid()}";
         var validRequest = new { Username = uniqueUsername, Password = "password123" };
 
-        // Act
         var response = await client.PostAsJsonAsync("/api/auth/register", validRequest);
 
-        // Assert
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
     }
 
@@ -83,5 +81,22 @@ public class AuthLogIntegrationTests : IClassFixture<WebApplicationFactory<Progr
 
         // Assert
         Assert.Equal(HttpStatusCode.OK, loginResponse.StatusCode);
+    }
+
+    [Fact]
+    public async Task Login_WithWrongCredentials_ReturnsUnauthorized_401()
+    {
+        // Arrange
+        var client = _factory.CreateClient();
+        
+        // Veritabanında olmayan veya yanlış şifreye sahip bir kullanıcı bilgisi yolluyoruz.
+        // AuthController'daki Unauthorized kontrolüne takılması için bu veriyi kullanıyoruz.
+        var wrongCredentials = new { Username = "nonexistentuser", Password = "wrongpassword123" }; 
+
+        // Act
+        var response = await client.PostAsJsonAsync("/api/auth/login", wrongCredentials);
+
+        // Assert
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 }
