@@ -14,6 +14,7 @@
         public async Task InvokeAsync(HttpContext context)
         {
             string ipAddress = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+            bool limit = false;
             lock (_lock)
             {
                 if (_requestCounts.ContainsKey(ipAddress))
@@ -24,7 +25,7 @@
                         if (count >= LIMIT)
                         {
                             context.Response.StatusCode = StatusCodes.Status429TooManyRequests;
-                            return;
+                            limit = true;
                         }
                         else
                         {
@@ -41,7 +42,15 @@
                     _requestCounts[ipAddress] = (1, DateTime.UtcNow);
                 }
             }
-            await _next(context);
+            if (limit)
+            {
+               
+                    context.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync("{\"statusCode\": 429, \"error\": \"Too Many Requests\", \"message\": \"Rate limit exceeded. Please try again in one minute.\"}");
+                return;
+            }
+                await _next(context);
         }
     }
 }
