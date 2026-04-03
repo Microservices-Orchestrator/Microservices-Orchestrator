@@ -1,4 +1,5 @@
 using ThreatAlertService.Services;
+using ThreatAlertService.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ if (app.Environment.IsDevelopment())
 
 // Testleri kolaylaştırmak için HTTPS yönlendirmesini geçici olarak kapatıyoruz.
 // app.UseHttpsRedirection();
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.UseAuthorization();
 
