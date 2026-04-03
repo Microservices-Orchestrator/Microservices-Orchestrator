@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using System.Collections.Generic;
 using ThreatAlertService.Models;
 
 namespace ThreatAlertService.Services;
@@ -18,4 +19,7 @@ public class MongoDbService
 
     public async Task CreateAsync(ThreatAlert newAlert) =>
         await _threatAlertsCollection.InsertOneAsync(newAlert);
+
+    public async Task<List<ThreatAlert>> GetAsync() =>
+        await _threatAlertsCollection.Find(_ => true).ToListAsync();
 }
