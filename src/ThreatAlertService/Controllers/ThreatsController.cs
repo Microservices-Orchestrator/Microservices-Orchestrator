@@ -24,11 +24,24 @@ public class ThreatsController : ControllerBase
         return Ok(alerts);
     }
 
+    [HttpGet("{id:length(24)}", Name = "GetThreatById")]
+    public async Task<ActionResult<ThreatAlert>> GetThreatById(string id)
+    {
+        var alert = await _mongoDbService.GetAsync(id);
+
+        if (alert is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(alert);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] ThreatAlert newAlert)
     {
-        // ID'nin veritabanı tarafından otomatik atanmasını sağlamak için null yapıyoruz.
-        newAlert.Id = null;
+        // ID'yi kaydetmeden önce kendimiz oluşturuyoruz ki rota kurallarına (length:24) uysun ve 500 hatası vermesin.
+        newAlert.Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
         // Kayıt zamanını, istemciye güvenmek yerine sunucu tarafında belirliyoruz.
         newAlert.Timestamp = DateTime.UtcNow;
 
@@ -36,6 +49,6 @@ public class ThreatsController : ControllerBase
 
         // Kaynak oluşturulduktan sonra, o kaynağa erişilebilecek URL'i döndürmek en iyi REST pratiğidir.
         // Bir sonraki adımda (Commit 17) oluşturacağımız tekil getirme metoduna şimdiden referans veriyoruz.
-        return CreatedAtAction("GetThreatById", new { id = newAlert.Id }, newAlert);
+        return CreatedAtRoute("GetThreatById", new { id = newAlert.Id }, newAlert);
     }
 }
