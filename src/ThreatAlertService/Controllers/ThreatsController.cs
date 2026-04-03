@@ -18,9 +18,9 @@ public class ThreatsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<ThreatAlert>>> Get()
+    public async Task<ActionResult<List<ThreatAlert>>> Get([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        var alerts = await _mongoDbService.GetAsync();
+        var alerts = await _mongoDbService.GetAsync(page, pageSize);
         return Ok(alerts);
     }
 
