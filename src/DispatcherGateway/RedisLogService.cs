@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Connections;
 using StackExchange.Redis;
 using System.Net;
 using System.Text.Json;
+using DispatcherGateway.Common;
 
 namespace DispatcherGateway
 {
@@ -12,7 +13,7 @@ namespace DispatcherGateway
 
         public RedisLogService(IConfiguration configuration)
         {
-            string? redisConnectionString = configuration.GetConnectionString("Redis");
+            string? redisConnectionString = configuration.GetConnectionString(GlobalConstants.RedisConnectionStringName);
             if (string.IsNullOrWhiteSpace(redisConnectionString))
             {
                 throw new ArgumentNullException(nameof(redisConnectionString), "Redis bağlantı adresi appsettings.json veya çevre değişkenleri içinde bulunamadı!");
@@ -43,7 +44,7 @@ namespace DispatcherGateway
                     Timestamp = DateTime.UtcNow
                 };
                 string jsonLog = JsonSerializer.Serialize(logData);
-                await db.ListRightPushAsync("request_logs", jsonLog);
+                await db.ListRightPushAsync(GlobalConstants.RedisLogQueueName, jsonLog);
             }
             catch(Exception e)
             {
