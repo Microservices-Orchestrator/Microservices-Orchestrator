@@ -28,4 +28,7 @@ public class MongoDbService
 
     public async Task<ThreatAlert?> GetAsync(string id) =>
         await _threatAlertsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+
+    public async Task<long> GetThreatCountByIpAsync(string ip) =>
+        await _threatAlertsCollection.CountDocumentsAsync(x => x.SourceIp == ip);
 }

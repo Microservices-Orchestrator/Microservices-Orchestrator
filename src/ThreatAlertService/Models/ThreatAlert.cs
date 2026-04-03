@@ -16,4 +16,6 @@ public class ThreatAlert
     public string Description { get; set; } = null!;
 
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+
+    public bool IsCritical { get; set; } = false;
 }

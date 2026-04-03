@@ -45,6 +45,13 @@ public class ThreatsController : ControllerBase
         // Kayıt zamanını, istemciye güvenmek yerine sunucu tarafında belirliyoruz.
         newAlert.Timestamp = DateTime.UtcNow;
 
+        // İŞ MANTIĞI: Bu IP'den daha önce kaç tehdit gelmiş kontrol et.
+        var previousThreatCount = await _mongoDbService.GetThreatCountByIpAsync(newAlert.SourceIp);
+        if (previousThreatCount >= 4) // Bu kayıtla birlikte 5 veya daha fazla olacak
+        {
+            newAlert.IsCritical = true;
+        }
+
         await _mongoDbService.CreateAsync(newAlert);
 
         // Kaynak oluşturulduktan sonra, o kaynağa erişilebilecek URL'i döndürmek en iyi REST pratiğidir.
