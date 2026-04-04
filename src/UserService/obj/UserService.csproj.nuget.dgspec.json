@@ -1,36 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\UserService\\UserService.csproj": {}
+    "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/UserService/UserService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\UserService\\UserService.csproj": {
+    "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/UserService/UserService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\UserService\\UserService.csproj",
+        "projectUniqueName": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/UserService/UserService.csproj",
         "projectName": "UserService",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\UserService\\UserService.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\UserService\\obj\\",
+        "projectPath": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/UserService/UserService.csproj",
+        "packagesPath": "/Users/efeaydin/.nuget/packages/",
+        "outputPath": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/UserService/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/efeaydin/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/sdk/7.0.317/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -38,17 +33,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -74,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.317/RuntimeIdentifierGraph.json"
         }
       }
     }
