@@ -17,11 +17,11 @@ app.Map("/{**catch-all}", async (HttpContext context, RouterService routerServic
 {
     routerService.AddRoute("/api/threats", "http://threat-service");
     routerService.AddRoute("/api/auth", "http://auth-service");
-    routerService.AddRoute("/api/notifications", "http://notification-service");
+    routerService.AddRoute("/api/notifications", "http://notification-service:8080");
     routerService.AddRoute("/api/users", "https://jsonplaceholder.typicode.com");
 
     var request = context.Request.Path.Value; // �stek yolunu al
-    var response = await routerService.ForwardRequestAsync(context.Request.Path, context.Request.Method);
+    var response = await routerService.ForwardRequestAsync(context); // RouterService ile istei ilet
 
     if (response != null)
     {

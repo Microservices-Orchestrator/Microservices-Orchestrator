@@ -12,7 +12,10 @@ namespace DispatcherGateway
         }
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.Request.Path.StartsWithSegments("/health"))
+            var path = context.Request.Path;
+            if (path.StartsWithSegments("/health") ||
+                path.StartsWithSegments("/api/auth/login") ||
+                path.StartsWithSegments("/api/auth/register"))
             {
                 await _next(context);
                 return;
