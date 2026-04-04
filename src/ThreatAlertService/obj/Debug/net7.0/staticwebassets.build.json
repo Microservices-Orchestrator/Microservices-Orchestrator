@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ETsVSqh1fSau1MOTPRf8wskBVHT12lyDrkaFYIRbocU=",
+  "Source": "ThreatAlertService",
+  "BasePath": "_content/ThreatAlertService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

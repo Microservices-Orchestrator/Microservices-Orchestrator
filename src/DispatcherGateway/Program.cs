@@ -1,41 +1,39 @@
+using DispatcherGateway;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
+builder.Services.AddHttpClient<RouterService>(); // RouterService i�in HttpClient ekliyoruz
+builder.Services.AddSingleton<ILogService, RedisLogService>(); // ILogService i�in RedisLogService ekliyoruz
+builder.Services.AddHealthChecks()
+    .AddRedis(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379", name: "Redis Check");
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app.UseMiddleware<RequestLogMiddleware>();
+app.UseMiddleware<RateLimitMiddleware>();
+app.UseMiddleware<JwtAuthMiddleware>(); // JWT do�rulama middleware'ini ekliyoruz
+app.MapHealthChecks("/health"); // Sa�l�k kontrol� endpoint'i ekliyoruz
 
-app.UseHttpsRedirection();
-
-var summaries = new[]
+app.Map("/{**catch-all}", async (HttpContext context, RouterService routerService) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    routerService.AddRoute("/api/threats", "http://threat-service");
+    routerService.AddRoute("/api/auth", "http://auth-service");
+    routerService.AddRoute("/api/notifications", "http://notification-service");
+    routerService.AddRoute("/api/users", "https://jsonplaceholder.typicode.com");
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    var request = context.Request.Path.Value; // �stek yolunu al
+    var response = await routerService.ForwardRequestAsync(context.Request.Path, context.Request.Method);
+
+    if (response != null)
+    {
+        var content = await response.Content.ReadAsStringAsync(); // Yan�t i�eri�ini oku
+        return Results.Content(content, "application/json", statusCode: (int)response.StatusCode);
+    }
+    else
+    {
+        return Results.NotFound("Router Bulunamad�");
+    }
+
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
