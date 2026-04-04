@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { check, Rate } from 'k6';
+import { generateRandomIp, generateRandomThreatType } from './utils.js';
 
 // Testin yapılandırma ayarları
 
@@ -32,13 +33,10 @@ export default function () {
 
   // DDoS simülasyonu için rastgele IP ve tehdit verileri üretiyoruz
   // Not: Commit 24'te daha gelişmiş Fake payload üreteçleri ekleyeceğiz.
-  const randomIp = `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
-  const threatTypes = ['SQL_Injection', 'XSS_Attack', 'Port_Scan', 'Malware_Infection'];
-  const randomThreatType = threatTypes[Math.floor(Math.random() * threatTypes.length)];
 
   const payload = JSON.stringify({
-    SourceIp: randomIp,
-    ThreatType: randomThreatType,
+    SourceIp: generateRandomIp(),
+    ThreatType: generateRandomThreatType(),
     Description: `DDoS simülasyonundan gelen ${randomThreatType} tehdidi.`,
     IsCritical: Math.random() < 0.1, // %10 ihtimalle kritik tehdit
   });

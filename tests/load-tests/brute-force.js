@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { check, Rate } from 'k6';
+import { generateRandomPassword } from './utils.js';
 
 // Testin yapılandırma ayarları
 
@@ -30,8 +31,8 @@ export default function () {
 
   // Brute-Force simülasyonu için rastgele kullanıcı adı ve şifre üretiyoruz
   const payload = JSON.stringify({
-    Username: `hacker_${Math.floor(Math.random() * 1000)}`,
-    Password: `pass_${Math.floor(Math.random() * 100000)}`,
+    Username: `user${Math.floor(Math.random() * 10000)}`,
+    Password: generateRandomPassword(),
   });
 
   const params = { headers: { 'Content-Type': 'application/json' } };
