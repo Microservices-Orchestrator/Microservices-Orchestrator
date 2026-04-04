@@ -1,9 +1,9 @@
 import http from 'k6/http';
-import { check, Rate } from 'k6';
+import { check } from 'k6';
+import { Rate } from 'k6/metrics'; // Hatanın çözümü: Rate buradan gelir!
 import { generateRandomPassword } from './utils.js';
 
 // Testin yapılandırma ayarları
-
 const errorRate = new Rate('errors');
 
 export const options = {

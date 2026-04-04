@@ -8,9 +8,6 @@
           "build/netstandard2.0/coverlet.collector.targets": {}
         }
       },
-      "Microsoft.AspNetCore.OpenApi/9.0.9": {
-        "type": "package"
-      },
       "Microsoft.CodeCoverage/17.12.0": {
         "type": "package",
         "compile": {
@@ -417,19 +414,13 @@
       },
       "DispatcherGateway/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.OpenApi": "9.0.9"
-        },
+        "framework": "Unsupported,Version=v0.0",
         "compile": {
           "bin/placeholder/DispatcherGateway.dll": {}
         },
         "runtime": {
           "bin/placeholder/DispatcherGateway.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       }
     }
   },
@@ -502,22 +493,6 @@
         "coverlet-icon.png",
         "coverlet.collector.6.0.2.nupkg.sha512",
         "coverlet.collector.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.OpenApi/9.0.9": {
-      "sha512": "3Sina0gS/CTYt9XG6DUFPdXOmJui7e551U0kO2bIiDk3vZ2sctxxenN+cE1a5CrUpjIVZfZr32neWYYRO+Piaw==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.openapi/9.0.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "PACKAGE.md",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
-        "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
-        "microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
-        "microsoft.aspnetcore.openapi.nuspec"
       ]
     },
     "Microsoft.CodeCoverage/17.12.0": {
@@ -984,32 +959,39 @@
     ]
   },
   "packageFolders": {
-    "/Users/efeaydin/.nuget/packages/": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/tests/DispatcherGateway.Tests/DispatcherGateway.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\tests\\DispatcherGateway.Tests\\DispatcherGateway.Tests.csproj",
       "projectName": "DispatcherGateway.Tests",
-      "projectPath": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/tests/DispatcherGateway.Tests/DispatcherGateway.Tests.csproj",
-      "packagesPath": "/Users/efeaydin/.nuget/packages/",
-      "outputPath": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/tests/DispatcherGateway.Tests/obj/",
+      "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\tests\\DispatcherGateway.Tests\\DispatcherGateway.Tests.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\tests\\DispatcherGateway.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/efeaydin/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/DispatcherGateway/DispatcherGateway.csproj": {
-              "projectPath": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/DispatcherGateway/DispatcherGateway.csproj"
+            "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\DispatcherGateway\\DispatcherGateway.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\DispatcherGateway\\DispatcherGateway.csproj"
             }
           }
         }
@@ -1018,7 +1000,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net7.0": {
@@ -1052,21 +1040,35 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.317/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
     {
-      "code": "NU1202",
+      "code": "NU1201",
       "level": "Error",
-      "message": "Package Microsoft.AspNetCore.OpenApi 9.0.9 is not compatible with net7.0 (.NETCoreApp,Version=v7.0). Package Microsoft.AspNetCore.OpenApi 9.0.9 supports: net9.0 (.NETCoreApp,Version=v9.0)",
-      "libraryId": "Microsoft.AspNetCore.OpenApi",
+      "message": "Project DispatcherGateway is not compatible with net7.0 (.NETCoreApp,Version=v7.0). Project DispatcherGateway supports: net9.0 (.NETCoreApp,Version=v9.0)",
+      "libraryId": "DispatcherGateway",
       "targetGraphs": [
         "net7.0"
       ]

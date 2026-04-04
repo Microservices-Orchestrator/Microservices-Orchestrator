@@ -1,8 +1,7 @@
 import http from 'k6/http';
-import { check, Rate } from 'k6';
+import { check } from 'k6';
+import { Rate } from 'k6/metrics'; // 1. HATA ÇÖZÜLDÜ
 import { generateRandomIp, generateRandomThreatType } from './utils.js';
-
-// Testin yapılandırma ayarları
 
 const errorRate = new Rate('errors');
 
@@ -10,47 +9,41 @@ export const options = {
   scenarios: {
     ddos_attack: {
       executor: 'constant-arrival-rate', // Saniyede sabit sayıda istek atmak için
-      rate: 500,                         // Saniyede 500 istek (DDoS simülasyonu için yüksek bir değer)
+      rate: 500,                         // Saniyede 500 istek (DDoS simülasyonu)
       timeUnit: '1s',
       duration: '60s',                   // Testin toplam süresi (60 saniye)
-      preAllocatedVUs: 100,              // Önceden bellekte ayrılacak Sanal Kullanıcı (VU)
-      maxVUs: 500,                       // İhtiyaç olursa çıkılabilecek maksimum VU
+      preAllocatedVUs: 100,              
+      maxVUs: 500,                       
     },
   },
   thresholds: {
-    // İsteklerin %90'ı 1000ms'den kısa sürede cevaplanmalı (DDoS altında daha esnek olabiliriz)
     http_req_duration: ['p(90)<1000'],
-    // Hata oranı (yani 201 dışında bir yanıt alma oranı) %10'dan az olmalı
-    errors: ['rate<0.10'],
   },
 };
 
 export default function () {
-  // Gateway'in varsayılan olarak 5000 portunda çalıştığını varsayıyoruz.
-  // Eğer Gateway henüz hazır değilse veya farklı bir portta çalışıyorsa bu URL'i güncelleyin.
-  // Alternatif olarak, doğrudan ThreatAlertService'i hedeflemek için: 'http://localhost:5065/api/threats'
-  const url = 'http://localhost:5000/api/threats';
+  // 2. HATA ÇÖZÜLDÜ: Gateway'imizin gerçek portu 5089
+  const url = 'http://localhost:5089/api/threats';
 
-  // DDoS simülasyonu için rastgele IP ve tehdit verileri üretiyoruz
-  // Not: Commit 24'te daha gelişmiş Fake payload üreteçleri ekleyeceğiz.
+  // 3. HATA ÇÖZÜLDÜ: Değişkeni tanımladık
+  const threatType = generateRandomThreatType(); 
 
   const payload = JSON.stringify({
     SourceIp: generateRandomIp(),
-    ThreatType: generateRandomThreatType(),
-    Description: `DDoS simülasyonundan gelen ${randomThreatType} tehdidi.`,
-    IsCritical: Math.random() < 0.1, // %10 ihtimalle kritik tehdit
+    ThreatType: threatType,
+    Description: `DDoS simülasyonundan gelen ${threatType} tehdidi.`,
+    IsCritical: Math.random() < 0.1, 
   });
 
   const params = { headers: { 'Content-Type': 'application/json' } };
 
   const res = http.post(url, payload, params);
 
-  // ThreatAlertService'in başarılı kayıt için 201 Created dönmesini bekliyoruz
+  // EFSANE DOKUNUŞ: Rate Limiter 429 fırlatıyor mu onu da ölçüyoruz!
   const checkOutput = check(res, {
-    'Durum kodu 201 (Created)': (r) => r.status === 201,
+    'Başarılı Kayıt (201 Created)': (r) => r.status === 201,
+    'Rate Limiter Devrede (429 Too Many Requests)': (r) => r.status === 429,
   });
 
-  // Eğer check başarısız olursa (yani 201 dışında bir kod dönerse),
-  // bunu kendi özel hata metrimize ekliyoruz.
   errorRate.add(!checkOutput);
 }

@@ -1,16 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "dlzEF0ePQOG5X2UTvYsIGOAeZm8jsf/xFWNCrGE9Ff2Hd8x8Zesoz2O0cETEZyEGbcfRu85UqO2XZItqkFGIbA==",
+  "dgSpecHash": "0JbkhbHF0K8=",
   "success": false,
-  "projectFilePath": "/Users/efeaydin/Documents/GitHub/Microservices-Orchestrator/src/ProductService/ProductService.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\ProductService\\ProductService.csproj",
   "expectedPackageFiles": [
-    "/Users/efeaydin/.nuget/packages/microsoft.aspnetcore.openapi/9.0.9/microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512"
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.9\\microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.20\\microsoft.netcore.app.host.win-x64.7.0.20.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1202",
       "level": "Error",
       "message": "Package Microsoft.AspNetCore.OpenApi 9.0.9 is not compatible with net7.0 (.NETCoreApp,Version=v7.0). Package Microsoft.AspNetCore.OpenApi 9.0.9 supports: net9.0 (.NETCoreApp,Version=v9.0)",
+      "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\ProductService\\ProductService.csproj",
+      "filePath": "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\Microservices-Orchestrator\\src\\ProductService\\ProductService.csproj",
       "libraryId": "Microsoft.AspNetCore.OpenApi",
       "targetGraphs": [
         "net7.0"

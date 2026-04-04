@@ -1,0 +1,184 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2B595020-6377-557E-6EE6-496D2A592D96}|src\\ThreatAlertService\\ThreatAlertService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\threatalertservice\\services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B595020-6377-557E-6EE6-496D2A592D96}|src\\ThreatAlertService\\ThreatAlertService.csproj|solutionrelative:src\\threatalertservice\\services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\authlogservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|solutionrelative:src\\authlogservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\authlogservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|solutionrelative:src\\authlogservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\authlogservice\\models\\authlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|solutionrelative:src\\authlogservice\\models\\authlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\authlogservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A7FEF5-E2C9-42F0-A5A5-850BC2256678}|src\\AuthLogService\\AuthLogService.csproj|solutionrelative:src\\authlogservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38365602-E7DB-4B3B-A2B2-3AE6CF86D4E3}|src\\UserService\\UserService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\userservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{38365602-E7DB-4B3B-A2B2-3AE6CF86D4E3}|src\\UserService\\UserService.csproj|solutionrelative:src\\userservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E80B9C6D-A34B-4CDC-8366-2895B968F13C}|src\\ProductService\\ProductService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\productservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E80B9C6D-A34B-4CDC-8366-2895B968F13C}|src\\ProductService\\ProductService.csproj|solutionrelative:src\\productservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38365602-E7DB-4B3B-A2B2-3AE6CF86D4E3}|src\\UserService\\UserService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\userservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{38365602-E7DB-4B3B-A2B2-3AE6CF86D4E3}|src\\UserService\\UserService.csproj|solutionrelative:src\\userservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E80B9C6D-A34B-4CDC-8366-2895B968F13C}|src\\ProductService\\ProductService.csproj|c:\\users\\lenovo\\onedrive\\masa\u00FCst\u00FC\\microservices-orchestrator\\src\\productservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E80B9C6D-A34B-4CDC-8366-2895B968F13C}|src\\ProductService\\ProductService.csproj|solutionrelative:src\\productservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MongoDbService.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\ThreatAlertService\\Services\\MongoDbService.cs",
+              "RelativeDocumentMoniker": "src\\ThreatAlertService\\Services\\MongoDbService.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\ThreatAlertService\\Services\\MongoDbService.cs",
+              "RelativeToolTip": "src\\ThreatAlertService\\Services\\MongoDbService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-04T12:13:14.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "src\\AuthLogService\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "src\\AuthLogService\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-04T12:12:50.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Models\\User.cs",
+              "RelativeDocumentMoniker": "src\\AuthLogService\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Models\\User.cs",
+              "RelativeToolTip": "src\\AuthLogService\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-04T12:12:44.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthLog.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Models\\AuthLog.cs",
+              "RelativeDocumentMoniker": "src\\AuthLogService\\Models\\AuthLog.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Models\\AuthLog.cs",
+              "RelativeToolTip": "src\\AuthLogService\\Models\\AuthLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-04T12:12:43.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Program.cs",
+              "RelativeDocumentMoniker": "src\\AuthLogService\\Program.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\AuthLogService\\Program.cs",
+              "RelativeToolTip": "src\\AuthLogService\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-04T12:12:29.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\ProductService\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\ProductService\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\ProductService\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\ProductService\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-02T19:04:55.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\UserService\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\UserService\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\UserService\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\UserService\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-02T19:04:45.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\ProductService\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\ProductService\\appsettings.json",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\ProductService\\appsettings.json",
+              "RelativeToolTip": "src\\ProductService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-02T19:04:14.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\UserService\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\UserService\\appsettings.json",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Masa\u00FCst\u00FC\\Microservices-Orchestrator\\src\\UserService\\appsettings.json",
+              "RelativeToolTip": "src\\UserService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-02T19:04:30.541Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
